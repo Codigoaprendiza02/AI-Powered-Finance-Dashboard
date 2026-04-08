@@ -39,6 +39,9 @@ const Row1 = (props: Props) => {
       };
     }))
   }, [data]);
+  console.log("revenueExpenses", revenueExpenses);
+  console.log("revenueProfit", revenueProfit);
+  console.log("revenueMonthByMonth", revenueMonthByMonth);
   return (
     <>
         <DashboardBox gridArea="a">
