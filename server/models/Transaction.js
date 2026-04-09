@@ -7,8 +7,7 @@ loadType(mongoose);
 const TransactionSchema = new Schema(
     {
         buyer: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "User"
+            type: String
         },
         amount : {
             type: mongoose.Types.Currency,

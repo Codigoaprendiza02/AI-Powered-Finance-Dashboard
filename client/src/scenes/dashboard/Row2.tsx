@@ -12,8 +12,6 @@ const pieData = [
   { name: 'Group B', value: 400 },
 ];
 
-const isAnimationActive = true;
-
 const Row2 = () => {
   const { palette }  = useTheme();
   const {data : operationalData } = useGetKpisQuery();
@@ -37,24 +35,7 @@ const Row2 = () => {
       };
     }))
   }, [productExpensesData]);
-  // const productExpenses = useMemo(() => {
-  //   if (!productExpensesData) return [];
-  //   return productExpensesData.map(({ _id, price, expense }) => {
-  //     const parseValue = (val: string | number) => {
-  //       if (typeof val === 'number' && !isNaN(val)) return val;
-  //       if (typeof val === 'string') {
-  //         const num = Number(val.replace(/[^0-9.-]+/g, ""));
-  //         return isNaN(num) ? null : num;
-  //       }
-  //       return null;
-  //     };
-  //     return {
-  //       id: _id,
-  //       price: parseValue(price),
-  //       expense: parseValue(expense),
-  //     };
-  //   });
-  // }, [productExpensesData]);
+
   console.log("productExpenses", productExpenses);
   return (
     <>
@@ -169,14 +150,18 @@ const Row2 = () => {
             data={productExpenses}
             fill={palette.primary.main}
             stroke={palette.primary.main}
-            shape={(props) => (
-              <circle
-                {...props}
-                r={4} // Set your desired radius here
-                fill={palette.primary.main}
-                stroke={palette.primary.main}
-              />
-            )}
+            shape={(props) => {
+              // Remove unwanted props that cause React warnings
+              const { tooltipPayload, tooltipPosition, ...rest } = props;
+              return (
+                <circle
+                  {...rest}
+                  r={4} // Set your desired radius here
+                  fill={palette.primary.main}
+                  stroke={palette.primary.main}
+                />
+              );
+            }}
           />
           <RechartsDevtools />
         </ScatterChart>
