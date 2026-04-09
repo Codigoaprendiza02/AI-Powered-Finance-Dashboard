@@ -26,7 +26,7 @@ const Row3 = (props: Props) => {
     { field: "_id", headerName: "ID", flex: 1 },
     { field: "buyer", headerName: "Buyer", flex: 0.67},
     { field: "amount", headerName: "Amount", flex: 0.5, renderCell: (params: GridCellParams) => `$${params.value}` },
-    { field: "productIds", headerName: "Count", flex: 0.5, renderCell: (params: GridCellParams) => `$${(params.value as Array<string>).length}` },
+    { field: "productIds", headerName: "Count", flex: 0.5, renderCell: (params: GridCellParams) => `${(params.value as Array<string>).length}` },
   ];
   const pieColors = [palette.primary.main, palette.secondary.main];
   const pieChartData = useMemo(() => {
