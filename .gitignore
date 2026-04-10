@@ -6,3 +6,8 @@ build
 server/node_modules
 server/dist
 server/build
+client/node_modules
+client/dist
+client/build
+client/.env
+server/.env
